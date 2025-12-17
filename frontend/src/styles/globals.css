@@ -1,0 +1,343 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+	--bg: #050b16;
+	--bg-muted: #080f1f;
+	--surface: #0f172a;
+	--surface-raised: #17233f;
+	--border: rgba(148, 163, 184, 0.12);
+	--text: #e2e8f0;
+	--text-muted: #94a3b8;
+	--brand: #14b89b;
+	--danger: #fb7185;
+	--warning: #facc15;
+	--success: #4ade80;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+html, body {
+	min-height: 100%;
+}
+
+body {
+	font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+	background: radial-gradient(circle at 20% 20%, rgba(20, 184, 155, 0.15), transparent 45%),
+		radial-gradient(circle at 80% 0%, rgba(59, 130, 246, 0.12), transparent 35%),
+		var(--bg);
+	color: var(--text);
+	line-height: 1.6;
+	margin: 0;
+}
+
+::selection {
+	background: rgba(20, 184, 155, 0.3);
+	color: #fff;
+}
+
+.glass-panel {
+	background: rgba(15, 23, 42, 0.65);
+	backdrop-filter: blur(22px);
+	border: 1px solid rgba(148, 163, 184, 0.12);
+	border-radius: 24px;
+	box-shadow: 0 25px 50px rgba(2, 6, 23, 0.35);
+}
+
+.card {
+	@apply glass-panel p-6 transition hover:-translate-y-0.5 hover:border-brand-400/40;
+}
+
+.btn {
+	@apply inline-flex items-center justify-center gap-2 font-medium rounded-full transition-colors;
+}
+
+.btn-primary {
+	@apply bg-gradient-to-r from-brand-400 to-brand-500 text-white px-4 py-2 shadow-lg shadow-brand-500/25;
+}
+
+.btn-secondary {
+	@apply bg-white/5 text-white border border-white/10 px-4 py-2;
+}
+
+.btn-ghost {
+	@apply text-white/80 hover:text-white px-3 py-2;
+}
+
+.input,
+.select,
+.textarea {
+	@apply w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-2 text-white placeholder-white/40 focus:border-brand-400 focus:ring-0;
+}
+
+.table {
+	@apply w-full text-left text-sm;
+}
+
+.table th {
+	@apply text-white/60 font-semibold text-xs uppercase tracking-wide pb-3 border-b border-white/10;
+}
+
+.table td {
+	@apply py-3 border-b border-white/5 text-white/70;
+}
+
+.table tbody tr:hover {
+	@apply bg-white/5;
+}
+
+.badge {
+	@apply inline-flex items-center gap-1 rounded-full border border-white/10 px-3 py-1 text-xs text-white/70;
+}
+
+.badge-success {
+	@apply border-emerald-400/40 text-emerald-300;
+}
+
+.badge-warning {
+	@apply border-amber-400/40 text-amber-300;
+}
+
+.badge-danger {
+	@apply border-rose-500/40 text-rose-300;
+}
+
+.section-title {
+	@apply text-xl font-semibold tracking-tight text-white mb-2;
+}
+
+.section-subtitle {
+	@apply text-sm text-white/60;
+}
+
+.skeleton {
+	@apply animate-pulse rounded-2xl bg-white/10;
+}
+
+.nav-link {
+	@apply flex items-center gap-3 rounded-2xl px-4 py-2 text-sm text-white/60 hover:bg-white/5 hover:text-white transition;
+}
+
+.nav-link-active {
+	@apply bg-gradient-to-r from-brand-500/20 to-brand-400/10 text-white border border-brand-500/30;
+}
+
+/* ===== TAHOE DESIGN SYSTEM ===== */
+
+/* Stat Cards - Glassmorphic stats display */
+.stat-card {
+	@apply flex flex-col gap-1 rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur-sm;
+}
+
+.stat-label {
+	@apply text-xs uppercase tracking-widest text-white/40;
+}
+
+.stat-value {
+	@apply text-2xl font-bold text-white;
+}
+
+/* Pills - Compact status indicators */
+.pill {
+	@apply inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-medium;
+}
+
+.pill-neutral {
+	@apply text-white/70;
+	background-color: rgba(255, 255, 255, 0.1);
+}
+
+.pill-brand {
+	@apply text-brand-400 border;
+	background-color: rgba(20, 184, 155, 0.2);
+	border-color: rgba(20, 184, 155, 0.3);
+}
+
+.pill-success {
+	@apply text-emerald-300 border;
+	background-color: rgba(16, 185, 129, 0.2);
+	border-color: rgba(16, 185, 129, 0.3);
+}
+
+.pill-warning {
+	@apply text-amber-300 border;
+	background-color: rgba(245, 158, 11, 0.2);
+	border-color: rgba(245, 158, 11, 0.3);
+}
+
+.pill-danger {
+	@apply text-rose-300 border;
+	background-color: rgba(244, 63, 94, 0.2);
+	border-color: rgba(244, 63, 94, 0.3);
+}
+
+.pill-info {
+	@apply text-blue-300 border;
+	background-color: rgba(59, 130, 246, 0.2);
+	border-color: rgba(59, 130, 246, 0.3);
+}
+
+/* Empty State */
+.empty-state {
+	@apply flex flex-col items-center justify-center gap-3 py-12 text-center text-white/40;
+}
+
+.empty-state-icon {
+	@apply h-12 w-12 text-white/20;
+}
+
+/* Notification Panel - Tahoe Style */
+.notification-panel {
+	@apply fixed right-4 top-20 z-50 w-96 max-h-[80vh] overflow-hidden;
+	@apply rounded-3xl border border-white/10 bg-slate-900/95 backdrop-blur-xl;
+	@apply shadow-2xl shadow-black/50;
+}
+
+.notification-header {
+	@apply flex items-center justify-between border-b border-white/10 px-5 py-4;
+}
+
+.notification-list {
+	@apply max-h-96 overflow-y-auto;
+}
+
+.notification-item {
+	@apply flex gap-3 border-b border-white/5 px-5 py-4 transition-colors hover:bg-white/5;
+}
+
+.notification-item-unread {
+	@apply border-l-2 border-l-brand;
+	background-color: rgba(20, 184, 155, 0.05);
+}
+
+.notification-icon {
+	@apply flex h-10 w-10 shrink-0 items-center justify-center rounded-full;
+}
+
+.notification-icon-warning {
+	@apply text-amber-400;
+	background-color: rgba(245, 158, 11, 0.2);
+}
+
+.notification-icon-danger {
+	@apply text-rose-400;
+	background-color: rgba(244, 63, 94, 0.2);
+}
+
+.notification-icon-info {
+	@apply text-blue-400;
+	background-color: rgba(59, 130, 246, 0.2);
+}
+
+.notification-icon-success {
+	@apply text-emerald-400;
+	background-color: rgba(16, 185, 129, 0.2);
+}
+
+/* Progress Bar */
+.progress-bar {
+	@apply h-2 w-full overflow-hidden rounded-full bg-white/10;
+}
+
+.progress-bar-fill {
+	@apply h-full rounded-full bg-gradient-to-r from-brand to-blue-500 transition-all duration-500;
+}
+
+/* Action Buttons - Tahoe style */
+.btn-action {
+	@apply inline-flex items-center gap-2 rounded-xl px-4 py-2 text-sm font-medium transition-all;
+	@apply bg-white/5 text-white/80 hover:bg-white/10 hover:text-white;
+	@apply border border-white/10 hover:border-white/20;
+}
+
+.btn-action-primary {
+	@apply text-white border;
+	background: linear-gradient(to right, rgba(20, 184, 155, 0.2), rgba(59, 130, 246, 0.2));
+	border-color: rgba(20, 184, 155, 0.3);
+}
+
+.btn-action-primary:hover {
+	background: linear-gradient(to right, rgba(20, 184, 155, 0.3), rgba(59, 130, 246, 0.3));
+}
+
+/* Checkbox - Custom Tahoe style */
+.checkbox {
+	@apply h-5 w-5 rounded-md border-2 bg-white/5;
+	@apply checked:border-brand checked:bg-brand;
+	@apply focus:ring-2 focus:ring-offset-0;
+	border-color: rgba(255, 255, 255, 0.2);
+}
+
+.checkbox:focus {
+	--tw-ring-color: rgba(20, 184, 155, 0.5);
+}
+
+/* Divider */
+.divider {
+	@apply my-4 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent;
+}
+
+/* Shimmer Animation for Loading States */
+@keyframes shimmer {
+	0% { background-position: -200% 0; }
+	100% { background-position: 200% 0; }
+}
+
+.shimmer {
+	background: linear-gradient(90deg, transparent 25%, rgba(255,255,255,0.1) 50%, transparent 75%);
+	background-size: 200% 100%;
+	animation: shimmer 1.5s infinite;
+}
+
+/* Glow Effects */
+.glow-brand {
+	box-shadow: 0 0 20px rgba(20, 184, 155, 0.3), 0 0 40px rgba(20, 184, 155, 0.1);
+}
+
+.glow-danger {
+	box-shadow: 0 0 20px rgba(251, 113, 133, 0.3), 0 0 40px rgba(251, 113, 133, 0.1);
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+	width: 6px;
+	height: 6px;
+}
+
+::-webkit-scrollbar-track {
+	background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+	background: rgba(148, 163, 184, 0.2);
+	border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: rgba(148, 163, 184, 0.3);
+}
+
+/* City Color Tags */
+.city-tag {
+	@apply inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 text-xs font-medium;
+}
+
+/* Turquoise utilities */
+.text-turquoise-400 {
+	color: #2dd4bf;
+}
+
+.bg-turquoise-500\/20 {
+	background-color: rgba(20, 184, 155, 0.2);
+}
+
+.border-turquoise-500\/40 {
+	border-color: rgba(20, 184, 155, 0.4);
+}
+
+.border-turquoise-400\/30 {
+	border-color: rgba(45, 212, 191, 0.3);
+}

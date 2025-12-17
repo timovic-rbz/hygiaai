@@ -1,0 +1,29 @@
+version: "3.9"
+
+services:
+  backend:
+    image: python:3.11-slim
+    working_dir: /app
+    command: bash -lc "pip install -r backend/requirements.txt && uvicorn backend.app.main:app --host 0.0.0.0 --port 8000"
+    volumes:
+      - ..:/app
+    ports:
+      - "8000:8000"
+    env_file:
+      - ../.env
+    depends_on: []
+
+  frontend:
+    image: node:20-alpine
+    working_dir: /app/frontend
+    command: sh -lc "npm install && npm run dev"
+    volumes:
+      - ..:/app
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+    depends_on:
+      - backend
+
+

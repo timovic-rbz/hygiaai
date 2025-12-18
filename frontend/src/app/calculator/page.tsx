@@ -230,7 +230,7 @@ export default function CalculatorPage() {
 							<div className="mt-2">
 								<label className="label">Stunden (geschätzt)</label>
 								<input type="number" className="input w-full" value={inputs.hours_estimated} onChange={e => setInputs({...inputs, hours_estimated: Number(e.target.value)})} />
-								<div className="text-xs text-white/50">Wenn > 0, wird Stunden-Satz verwendet.</div>
+								<div className="text-xs text-white/50">Wenn größer 0, wird Stunden-Satz verwendet.</div>
 							</div>
 						</>
 					)}

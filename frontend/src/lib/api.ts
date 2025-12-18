@@ -90,4 +90,24 @@ export async function sharePhoto(photoId: string) {
 	return await apiFetch<{ share_token: string; share_url: string }>(`/photos/${photoId}/share`, "POST");
 }
 
+export async function fetchInvoiceReminders() {
+	try {
+		return await apiFetch<any[]>("/invoice-reminders");
+	} catch {
+		// Fallback demo data
+		return [
+			{ id: "ir1", customer_name: "Kunde Alpha", amount: 150.00, due_date: "2025-01-15", status: "pending" },
+			{ id: "ir2", customer_name: "Kunde Beta", amount: 280.50, due_date: "2025-01-20", status: "pending" },
+		];
+	}
+}
+
+export async function updateInvoiceReminder(id: string, status: string) {
+	try {
+		return await apiFetch<any>(`/invoice-reminders/${id}`, "PUT", { status });
+	} catch {
+		return { id, status };
+	}
+}
+
 

@@ -209,7 +209,8 @@ body {
 }
 
 .notification-item-unread {
-	@apply border-l-2 border-l-brand;
+	@apply border-l-2;
+	border-left-color: rgb(20, 184, 155);
 	background-color: rgba(20, 184, 155, 0.05);
 }
 
@@ -243,7 +244,8 @@ body {
 }
 
 .progress-bar-fill {
-	@apply h-full rounded-full bg-gradient-to-r from-brand to-blue-500 transition-all duration-500;
+	@apply h-full rounded-full transition-all duration-500;
+	background: linear-gradient(to right, rgb(20, 184, 155), rgb(59, 130, 246));
 }
 
 /* Action Buttons - Tahoe style */
@@ -265,10 +267,14 @@ body {
 
 /* Checkbox - Custom Tahoe style */
 .checkbox {
-	@apply h-5 w-5 rounded-md border-2 bg-white/5;
-	@apply checked:border-brand checked:bg-brand;
-	@apply focus:ring-2 focus:ring-offset-0;
+	@apply h-5 w-5 rounded-md border-2 focus:ring-2 focus:ring-offset-0;
+	background-color: rgba(255, 255, 255, 0.05);
 	border-color: rgba(255, 255, 255, 0.2);
+}
+
+.checkbox:checked {
+	background-color: rgb(20, 184, 155);
+	border-color: rgb(20, 184, 155);
 }
 
 .checkbox:focus {
